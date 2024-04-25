@@ -3,7 +3,7 @@ function setOnCeil(cell, pos) {
     if (!cell.classList.contains('enabled')) {
         return;
     }
-    fetch('/setOnCeil', {
+    fetch('/game/setOnCeil', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -32,7 +32,7 @@ function setOnCeil(cell, pos) {
 }
 
 function reset() {
-    fetch('/reset', {
+    fetch('/game/reset', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -56,7 +56,7 @@ function reset() {
 }
 
 function restart() {
-    fetch('/restart', {
+    fetch('/game/restart', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
