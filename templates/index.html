@@ -9,14 +9,14 @@
         <legend>JOGO DA VÉIA</legend>
         <form action="/initGame" method="post">
             <div class="input-group">
-                <label class="input-group__label" for="jogador1">Jogador 1:</label>
+                <label class="input-group__label" for="jogador1">Jogador 1</label>
                 <input class="input-group__input" type="text" id="jogador1" name="jogador1" value="Jogador 1"/>
             </div>
             <div class="input-group">
-                <label class="input-group__label" for="jogador2">Jogador 2:</label>
+                <label class="input-group__label" for="jogador2">Jogador 2</label>
                 <input class="input-group__input" type="text" id="jogador2" value="Jogador 2" name="jogador2"/>
             </div>
-            <input type="submit" value="JOGAR" style="margin-top:4px; height:25px; width:150px; font-size:14px"/>
+            <button type="submit" class="btn">Jogar</button>
         </form>
     </fieldset>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>

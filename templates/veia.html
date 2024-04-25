@@ -4,33 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
     <title>Jogo da Veia</title>
 </head>
 <body class="container">
-    <h1>JOGO DA VEIA</h1>
-    <h3 id="jogadorAtual"></h3>
-    <button class="btn-voltar" onclick="restart()">Voltar</button>
+    <h1>JOGO DA VELHA</h1>
+    <h2 class="jogador"></h2>
+
     <div id="game">
         <table cellpadding="0" cellspacing="0">
-            <tr border="1">
-                <td id="cell0" name="cell" onclick="setOnCeil(this, 0);">&nbsp;</td>
-                <td id="cell1" name="cell" onclick="setOnCeil(this, 1);">&nbsp;</td>
-                <td id="cell2" name="cell" onclick="setOnCeil(this, 2);">&nbsp;</td>
+            <tr>
+                <td id="cell0" name="cell" class="enabled" onclick="setOnCeil(this, 0);">&nbsp;</td>
+                <td id="cell1" name="cell" class="enabled" onclick="setOnCeil(this, 1);">&nbsp;</td>
+                <td id="cell2" name="cell" class="enabled" onclick="setOnCeil(this, 2);">&nbsp;</td>
             </tr>
             <tr>
-                <td id="cell3" name="cell" onclick="setOnCeil(this, 3);">&nbsp;</td>
-                <td id="cell4" name="cell" onclick="setOnCeil(this, 4);">&nbsp;</td>
-                <td id="cell5" name="cell" onclick="setOnCeil(this, 5);">&nbsp;</td>
+                <td id="cell3" name="cell" class="enabled" onclick="setOnCeil(this, 3);">&nbsp;</td>
+                <td id="cell4" name="cell" class="enabled" onclick="setOnCeil(this, 4);">&nbsp;</td>
+                <td id="cell5" name="cell" class="enabled" onclick="setOnCeil(this, 5);">&nbsp;</td>
             </tr>
             <tr>
-                <td id="cell6" name="cell" onclick="setOnCeil(this, 6);">&nbsp;</td>
-                <td id="cell7" name="cell" onclick="setOnCeil(this, 7);">&nbsp;</td>
-                <td id="cell8" name="cell" onclick="setOnCeil(this, 8);">&nbsp;</td>
+                <td id="cell6" name="cell" class="enabled" onclick="setOnCeil(this, 6);">&nbsp;</td>
+                <td id="cell7" name="cell" class="enabled" onclick="setOnCeil(this, 7);">&nbsp;</td>
+                <td id="cell8" name="cell" class="enabled" onclick="setOnCeil(this, 8);">&nbsp;</td>
             </tr>
         </table>
     </div>
-    <div>
-        <button onclick="reset()">resetar veia</button>
+    <div class="btns">
+        <button class="btn" onclick="restart()">Voltar</button>
+        <button class="btn" onclick="reset()">Resetar Jogo</button>
     </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
