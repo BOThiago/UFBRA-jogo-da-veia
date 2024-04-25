@@ -9,9 +9,9 @@ def check_winner(tabuleiro):
     for condition in win_conditions:
         a, b, c = condition
         if tabuleiro[a] == tabuleiro[b] == tabuleiro[c] and tabuleiro[a] is not None:
-            return f"Venceu!"
+            return True
             
     if None not in tabuleiro:
-        return "Empate!"
+        return False
 
     return None

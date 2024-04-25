@@ -1,24 +1,30 @@
 function setOnCeil(cell, pos) {
-    const jogador1 = getCookie("jogador1");
-    const jogador2 = getCookie("jogador2");
     const jogadorAtual = getCookie("jogadorAtual");
-
+    if (!cell.classList.contains('enabled')) {
+        return;
+    }
     fetch('/setOnCeil', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `pos=${pos}&jogador1=${jogador1}&jogador2=${jogador2}&jogadorAtual=${jogadorAtual}`
+        body: `pos=${pos}&jogadorAtual=${jogadorAtual}`
     })
     .then(response => {
         if (!response.ok) {
+            alert('Erro ao preencher a célula');
             throw new Error('Erro ao preencher a célula');
         }
-        return response.text();
+        return response.json();
     })
     .then(result => {
-        if (result === "Venceu!") document.getElementById(`cell${pos}`).innerText = result;
-        document.getElementById(`cell${pos}`).innerText = result;
+        const novoJogadorAtual = getCookie("jogadorAtual");
+        document.querySelector(".jogador").innerText = `Jogador atual: ${novoJogadorAtual}`;
+        document.getElementById(`cell${pos}`).innerText = result.forma;
+        if(result.message){
+            document.querySelector(".jogador").innerText = result.message;
+            toggleGame();
+        }
     })
     .catch(error => {
         console.error('Erro:', error);
@@ -38,8 +44,11 @@ function reset() {
     })
     .then(result => {
         for (let i = 0; i < 9; i++) {
-            document.getElementById(`cell${i}`).innerText = " ";
+            document.getElementById(`cell${i}`).innerText = "";
         }
+        toggleGame();
+        const jogadorAtual = getCookie("jogadorAtual");
+        document.querySelector(".jogador").innerText = `Jogador atual: ${jogadorAtual}`;
     })
     .catch(error => {
         console.error('Erro:', error);
@@ -78,3 +87,15 @@ function getCookie(name) {
     }
     return null;
 }
+
+function toggleGame(){
+    let cells = document.getElementsByName("cell");
+    cells.forEach(cell => {
+        cell.classList.toggle("enabled");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const jogadorAtual = getCookie("jogadorAtual");
+    document.querySelector(".jogador").innerText = `Jogador atual: ${jogadorAtual}`;
+});
